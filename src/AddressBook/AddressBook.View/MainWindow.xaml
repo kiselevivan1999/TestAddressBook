@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AddressBook.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ListBox x:Name="ContactsListBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,68,574,50"/>
+        Title="MainWindow" Height="400" Width="756">
+    <Grid Margin="0,0,0,0">
+        <GroupBox Header="Contact details" Margin="260,20,20,30" Background="WhiteSmoke">
+            <StackPanel>
+                <Label x:Name="IdLabel" Content="ID: " Background="AliceBlue"/>
+                <TextBlock x:Name="IdTextBlock" Height="20" Background="White"/>
+                <Label x:Name="SurnameLabel" Content="Surname: " Background="AliceBlue"/>
+                <TextBlock x:Name="SurnameTextBox" Height="20" Background="White"/>
+                <Label x:Name="NameLabel" Content="Name: " Background="AliceBlue"/>
+                <TextBlock x:Name="NameTextBox" Height="20" Background="White"/>
+                <Label x:Name="PatronymicLabel" Content="Patronymic: " Background="AliceBlue"/>
+                <TextBlock x:Name="PatronymicTextBlock" Height="20" Background="White"/>
+                <Label x:Name="PhoneNumberLabel" Content="PhoneNumber: " Background="AliceBlue"/>
+                <TextBlock x:Name="PhoneNumberTextBlock" Height="20" Background="White"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Contacts: " Margin="10,20,520,100">
+            <ListBox x:Name="ContactsListBox"/>
+        </GroupBox>
+        <Button x:Name="AddButton" Margin="20,300,696,50" Background="White" BorderBrush="White">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Image Source="C:\PROJECTS\Programming\TestAddressBook\icons\plus.png"/>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button x:Name="EditButton" Margin="65,300,651,50" Background="White" BorderBrush="White">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Image Source="C:\PROJECTS\Programming\TestAddressBook\icons\edit.png"/>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Button x:Name="DeleteButton" Margin="110,300,606,50" Background="White" BorderBrush="White">
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <Image Source="C:\PROJECTS\Programming\TestAddressBook\icons\minus.png"/>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
     </Grid>
 </Window>
