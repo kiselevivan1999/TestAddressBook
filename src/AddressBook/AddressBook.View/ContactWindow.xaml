@@ -7,6 +7,19 @@
         mc:Ignorable="d"
         Title="ContactWindow" Height="450" Width="800">
     <Grid>
-        
+        <GroupBox Header="Contact details" Background="WhiteSmoke" VerticalAlignment="Top">
+            <StackPanel>
+                <Label x:Name="IdLabel" Content="ID: " Background="AliceBlue"/>
+                <TextBlock x:Name="IdTextBlock" Height="20" Background="White"/>
+                <Label x:Name="SurnameLabel" Content="Surname: " Background="AliceBlue"/>
+                <TextBlock x:Name="SurnameTextBox" Height="20" Background="White"/>
+                <Label x:Name="NameLabel" Content="Name: " Background="AliceBlue"/>
+                <TextBlock x:Name="NameTextBox" Height="20" Background="White"/>
+                <Label x:Name="PatronymicLabel" Content="Patronymic: " Background="AliceBlue"/>
+                <TextBlock x:Name="PatronymicTextBlock" Height="20" Background="White"/>
+                <Label x:Name="PhoneNumberLabel" Content="PhoneNumber: " Background="AliceBlue"/>
+                <TextBlock x:Name="PhoneNumberTextBlock" Height="20" Background="White"/>
+            </StackPanel>
+        </GroupBox>
     </Grid>
 </Window>
