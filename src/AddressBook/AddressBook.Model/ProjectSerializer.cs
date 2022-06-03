@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBook.Model
 {
-    internal class ProjectSerializer
+    public class ProjectSerializer
     {
     }
 }
