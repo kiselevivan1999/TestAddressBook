@@ -18,6 +18,5 @@ namespace AddressBook.Model
 
         public PhoneNumber Number { get; set; }
 
-        public ProjectSerializer projectSerializer;
     }
 }

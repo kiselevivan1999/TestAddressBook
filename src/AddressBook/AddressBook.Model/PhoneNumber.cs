@@ -17,7 +17,7 @@ namespace AddressBook.Model
             
             set 
             {
-                string strNumber = Regex.Replace(_number.ToString(), "[^0-9]", "");
+                string strNumber = Regex.Replace(value.ToString(), "[^0-9]", "");
 
                 if (!isValidated(strNumber)) 
                 {

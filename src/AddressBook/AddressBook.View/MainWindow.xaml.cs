@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using AddressBook.Model;
+using System.Windows.Controls;
 
 namespace AddressBook.View
 {
@@ -21,9 +10,101 @@ namespace AddressBook.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<Contact> _contacts = new List<Contact>();
         public MainWindow()
         {            
             InitializeComponent();
+
+        }
+
+        private void UpdateSelectContact(int index) 
+        {
+            Contact contact = _contacts[index];
+
+            IdTextBlock.Text = contact.Id.ToString();
+            SurnameTextBox.Text = contact.Surname;
+            NameTextBox.Text = contact.Name;
+            PatronymicTextBlock.Text = contact.Patronymic;
+            PhoneNumberTextBlock.Text = contact.Number.ToString();
+        }
+
+        private void UpdateListBox()
+        { 
+            ContactsListBox.Items.Clear();
+
+            foreach (Contact contact in _contacts) 
+            {
+                ContactsListBox.Items.Add(contact.Surname);
+            }
+        }
+
+        private void AddContact() 
+        {
+            ContactWindow contactWindow = new ContactWindow();
+            var result = contactWindow.ShowDialog();
+            
+            _contacts.Add(contactWindow.Contact);
+            UpdateListBox();
+        }
+
+        private void EditContact() 
+        {
+            ContactWindow contactWindow = new ContactWindow();
+            contactWindow.Show();
+
+
+        }
+
+        private void RemoveContact(int index) 
+        {
+            _contacts.RemoveAt(index);
+            UpdateListBox();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddContact();
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditContact();
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex == -1) 
+            {
+                MessageBox.Show("Choose contact");
+                return;
+            }
+            var result = MessageBox.Show("You realy want remove this contact?", "Removing", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes) 
+            {
+                RemoveContact(ContactsListBox.SelectedIndex);
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            var result = MessageBox.Show("You realy want exit?", "Exiting", MessageBoxButton.YesNo);
+            
+            if (result == MessageBoxResult.No)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            //ProjectSerializer.SaveToFile(_contacts);
+        }
+
+        private void ContactsListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            if (ContactsListBox.SelectedIndex == -1) 
+            {
+                return;
+            }
+            UpdateSelectContact(ContactsListBox.SelectedIndex);
         }
     }
 }
