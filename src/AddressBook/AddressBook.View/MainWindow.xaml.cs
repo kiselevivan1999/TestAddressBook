@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using AddressBook.Model;
+using System.Windows.Controls;
 
 namespace AddressBook.View
 {
@@ -40,7 +41,10 @@ namespace AddressBook.View
         private void AddContact() 
         {
             ContactWindow contactWindow = new ContactWindow();
-            contactWindow.Show();
+            var result = contactWindow.ShowDialog();
+            
+            _contacts.Add(contactWindow.Contact);
+            UpdateListBox();
         }
 
         private void EditContact() 
