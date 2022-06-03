@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AddressBook.View"
         mc:Ignorable="d"
-        Title="ContactWindow" Height="330" Width="600" 
-        MinHeight="330" MaxHeight="330" MinWidth="600" MaxWidth="600">
+        Title="ContactWindow" Height="340" Width="600" 
+        MinHeight="340" MaxHeight="340" MinWidth="600" MaxWidth="600">
     <Grid>
         <GroupBox Header="Contact details" Background="WhiteSmoke" VerticalAlignment="Top" Margin="10">
             <StackPanel>
@@ -22,7 +22,7 @@
                 <TextBlock x:Name="PhoneNumberTextBlock" Height="20" Background="White"/>
             </StackPanel>
         </GroupBox>
-        <Button x:Name="AddButton" Content="Add" Margin="479,0,71,16" Height="30" VerticalAlignment="Bottom"/>
-        <Button x:Name="CanselButton" Content="Cancel" Margin="540,0,10,16" Height="30" VerticalAlignment="Bottom"/>
+        <Button x:Name="AddButton" Content="Add" Margin="0,268,93,0" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Button x:Name="CanselButton" Content="Cancel" Margin="0,268,10,0" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right"/>
     </Grid>
 </Window>

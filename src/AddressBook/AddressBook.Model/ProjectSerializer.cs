@@ -14,7 +14,7 @@ namespace AddressBook.Model
 
         private static XmlDocument xmlDoc = new XmlDocument();
 
-        public static void SaveToFile(Contact contact) 
+        public static void SaveToFile(List <Contact> contacts) 
         {
             CreateFile();
 
