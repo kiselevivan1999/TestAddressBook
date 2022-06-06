@@ -41,6 +41,7 @@ namespace AddressBook.View
         private void AddContact() 
         {
             ContactWindow contactWindow = new ContactWindow();
+            contactWindow.Contact.Id = _contacts.Count;
             var result = contactWindow.ShowDialog();
             
             _contacts.Add(contactWindow.Contact);
