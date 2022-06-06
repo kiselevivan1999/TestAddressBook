@@ -61,8 +61,6 @@ namespace AddressBook.View
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateContact();
-
-            
             
             Close();
                 

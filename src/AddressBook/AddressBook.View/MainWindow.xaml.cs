@@ -98,7 +98,7 @@ namespace AddressBook.View
             //ProjectSerializer.SaveToFile(_contacts);
         }
 
-        private void ContactsListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        private void ContactsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ContactsListBox.SelectedIndex == -1) 
             {
