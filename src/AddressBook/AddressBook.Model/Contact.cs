@@ -23,6 +23,7 @@ namespace AddressBook.Model
                 {
                     throw new ArgumentException("Name must be between 2 and 50 characters");
                 }
+                _name = value;
             } 
         }
 
@@ -36,6 +37,7 @@ namespace AddressBook.Model
                 {
                     throw new ArgumentException("Sername must be between 2 and 50 characters");
                 }
+                _sername = value;
             }
         }
 
@@ -49,10 +51,12 @@ namespace AddressBook.Model
                 {
                     throw new ArgumentException("Patronymic must be between 2 and 50 characters");
                 }
+                _patronymic = value;
             }
         }
 
         public PhoneNumber Number { get; set; }
+
 
 
         private bool isCorrectLenght(string str) 

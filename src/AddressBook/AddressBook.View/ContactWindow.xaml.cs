@@ -36,17 +36,18 @@ namespace AddressBook.View
 
             set 
             {
-                Contact = value;
-                UpdateWindow();
+                _contact = value;
+                
+                UpdateWindow();          
             }
         }
 
         public void UpdateContact() 
         {
-            Contact.Surname = SurnameTextBox.Text;
-            Contact.Name = NameTextBox.Text;
-            Contact.Patronymic = PatronymicTextBox.Text;
-            Contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
+            _contact.Surname = SurnameTextBox.Text;
+            _contact.Name = NameTextBox.Text;
+            _contact.Patronymic = PatronymicTextBox.Text;
+            _contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
         }
 
         public void UpdateWindow() 
@@ -78,7 +79,7 @@ namespace AddressBook.View
         {
             try
             {
-                Contact.Surname = SurnameTextBox.Text;
+                _contact.Surname = SurnameTextBox.Text;
                 SurnameTextBox.Background = _correctColor;
             }
             catch (ArgumentException ex)
@@ -94,7 +95,7 @@ namespace AddressBook.View
         {
             try
             {
-                Contact.Name = NameTextBox.Text;
+                _contact.Name = NameTextBox.Text;
                 NameTextBox.Background = _correctColor;
             }
             catch (ArgumentException ex)
@@ -110,7 +111,7 @@ namespace AddressBook.View
         {
             try
             {
-                Contact.Patronymic = PatronymicTextBox.Text;
+                _contact.Patronymic = PatronymicTextBox.Text;
                 PatronymicTextBox.Background = _correctColor;
             }
             catch (ArgumentException ex)
@@ -126,7 +127,7 @@ namespace AddressBook.View
         {
             try
             {
-                Contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
+                _contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
                 PhoneNumberTextBox.Background = _correctColor;
 
             }
