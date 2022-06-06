@@ -23,6 +23,6 @@
             </StackPanel>
         </GroupBox>
         <Button x:Name="AddButton" Content="Add" Margin="0,268,93,0" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Click="AddButton_Click"/>
-        <Button x:Name="CanselButton" Content="Cancel" Margin="0,268,10,0" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right"/>
+        <Button x:Name="CanselButton" Content="Cancel" Margin="0,268,10,0" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Click="CanselButton_Click"/>
     </Grid>
 </Window>

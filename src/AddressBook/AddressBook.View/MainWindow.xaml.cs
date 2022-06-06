@@ -43,6 +43,11 @@ namespace AddressBook.View
             ContactWindow contactWindow = new ContactWindow();
             contactWindow.Contact.Id = _contacts.Count;
             var result = contactWindow.ShowDialog();
+
+            if (!result.Value) 
+            {
+                return;
+            }
             
             _contacts.Add(contactWindow.Contact);
             UpdateListBox();

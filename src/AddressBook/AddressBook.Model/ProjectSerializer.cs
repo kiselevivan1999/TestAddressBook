@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
 
@@ -10,6 +7,7 @@ namespace AddressBook.Model
 {
     public static class ProjectSerializer
     {
+
         private static readonly string _fileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AddressBook\userdata.xml";
 
         private static XmlDocument xmlDoc = new XmlDocument();
