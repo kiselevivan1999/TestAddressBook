@@ -13,13 +13,13 @@
                 <Label x:Name="IdLabel" Content="ID: " Background="AliceBlue"/>
                 <TextBlock x:Name="IdTextBlock" Height="20" Background="White"/>
                 <Label x:Name="SurnameLabel" Content="Surname: " Background="AliceBlue"/>
-                <TextBox x:Name="SurnameTextBox" Height="20" Background="White"/>
+                <TextBox x:Name="SurnameTextBox" Height="20" Background="White" TextChanged="SurnameTextBox_TextChanged"/>
                 <Label x:Name="NameLabel" Content="Name: " Background="AliceBlue"/>
-                <TextBox x:Name="NameTextBox" Height="20" Background="White"/>
+                <TextBox x:Name="NameTextBox" Height="20" Background="White" TextChanged="NameTextBox_TextChanged"/>
                 <Label x:Name="PatronymicLabel" Content="Patronymic: " Background="AliceBlue"/>
-                <TextBox x:Name="PatronymicTextBox" Height="20" Background="White"/>
+                <TextBox x:Name="PatronymicTextBox" Height="20" Background="White" TextChanged="PatronymicTextBox_TextChanged"/>
                 <Label x:Name="PhoneNumberLabel" Content="PhoneNumber: " Background="AliceBlue"/>
-                <TextBox x:Name="PhoneNumberTextBox" Height="20" Background="White"/>
+                <TextBox x:Name="PhoneNumberTextBox" Height="20" Background="White" TextChanged="PhoneNumberTextBox_TextChanged"/>
             </StackPanel>
         </GroupBox>
         <Button x:Name="AddButton" Content="Add" Margin="0,268,93,0" Height="25" Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Click="AddButton_Click"/>

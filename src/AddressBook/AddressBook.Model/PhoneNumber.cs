@@ -34,7 +34,7 @@ namespace AddressBook.Model
 
         private bool isValidated(string number)
         { 
-            var regex = new Regex("^8|7[0-9]{10}$");
+            var regex = new Regex("^(7|8)[0-9]{10}$");
 
             return regex.IsMatch(number);
         }
