@@ -41,17 +41,34 @@ namespace AddressBook.View
         private void AddContact() 
         {
             ContactWindow contactWindow = new ContactWindow();
+
+            contactWindow.Contact.Id = _contacts.Count;
             var result = contactWindow.ShowDialog();
+
+            if (!result.Value) 
+            {
+                return;
+            }
             
             _contacts.Add(contactWindow.Contact);
             UpdateListBox();
         }
 
-        private void EditContact() 
+        private void EditContact(int index) 
         {
             ContactWindow contactWindow = new ContactWindow();
-            contactWindow.Show();
+            contactWindow.Contact = _contacts[index];
+            var result = contactWindow.ShowDialog();
 
+            if (!result.Value)
+            {
+                return;
+            }
+
+            _contacts.RemoveAt(index);
+            _contacts.Insert(index, contactWindow.Contact);
+
+            UpdateListBox();
 
         }
 
@@ -68,7 +85,12 @@ namespace AddressBook.View
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditContact();
+            if (ContactsListBox.SelectedIndex == -1)
+            {
+                MessageBox.Show("Choose contact");
+                return;
+            }   
+             EditContact(ContactsListBox.SelectedIndex); 
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)

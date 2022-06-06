@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Controls;
 using AddressBook.Model;
+
 
 namespace AddressBook.View
 {
@@ -21,6 +13,14 @@ namespace AddressBook.View
     public partial class ContactWindow : Window
     {
         private Contact _contact = new Contact();
+
+        private Brush _correctColor = Brushes.White;
+
+        private Brush _errorColor = Brushes.Pink;
+
+        private ToolTip _numberToolTip = new ToolTip();
+
+        private ToolTip _stringToolTip = new ToolTip();
 
         public ContactWindow()
         {
@@ -36,17 +36,18 @@ namespace AddressBook.View
 
             set 
             {
-                Contact = value;
-                UpdateWindow();
+                _contact = value;
+                
+                UpdateWindow();          
             }
         }
 
         public void UpdateContact() 
         {
-            Contact.Surname = SurnameTextBox.Text;
-            Contact.Name = NameTextBox.Text;
-            Contact.Patronymic = PatronymicTextBox.Text;
-            Contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
+            _contact.Surname = SurnameTextBox.Text;
+            _contact.Name = NameTextBox.Text;
+            _contact.Patronymic = PatronymicTextBox.Text;
+            _contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
         }
 
         public void UpdateWindow() 
@@ -61,9 +62,82 @@ namespace AddressBook.View
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             UpdateContact();
-            
+
+            DialogResult = true;
+
+            Close();        
+        }
+
+        private void CanselButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+
             Close();
-                
+        }
+
+        private void SurnameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                _contact.Surname = SurnameTextBox.Text;
+                SurnameTextBox.Background = _correctColor;
+            }
+            catch (ArgumentException ex)
+            {
+                SurnameTextBox.Background = _errorColor;
+
+                _stringToolTip.Content = ex.Message;
+                SurnameTextBox.ToolTip = _stringToolTip;
+            }
+        }
+
+        private void NameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                _contact.Name = NameTextBox.Text;
+                NameTextBox.Background = _correctColor;
+            }
+            catch (ArgumentException ex)
+            {
+                NameTextBox.Background = _errorColor;
+
+                _stringToolTip.Content = ex.Message;
+                NameTextBox.ToolTip = _stringToolTip;
+            }
+        }
+
+        private void PatronymicTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                _contact.Patronymic = PatronymicTextBox.Text;
+                PatronymicTextBox.Background = _correctColor;
+            }
+            catch (ArgumentException ex)
+            {
+                PatronymicTextBox.Background = _errorColor;
+
+                _stringToolTip.Content = ex.Message;
+                PatronymicTextBox.ToolTip = _stringToolTip;
+            }
+        }
+
+        private void PhoneNumberTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                _contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
+                PhoneNumberTextBox.Background = _correctColor;
+
+            }
+            catch (Exception ex)
+            {
+                PhoneNumberTextBox.Background = _errorColor;
+
+                _numberToolTip.Content = ex.Message;
+                PhoneNumberTextBox.ToolTip = _numberToolTip;
+            }
         }
     }
 }
