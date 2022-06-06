@@ -57,8 +57,6 @@ namespace AddressBook.View
         {
             ContactWindow contactWindow = new ContactWindow();
             contactWindow.Show();
-
-
         }
 
         private void RemoveContact(int index) 
