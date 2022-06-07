@@ -117,7 +117,7 @@ namespace AddressBook.View
                 return;
             }
 
-            //ProjectSerializer.SaveToFile(_contacts);
+            ProjectSerializer.SaveToFile(_contacts);
         }
 
         private void ContactsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

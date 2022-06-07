@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace AddressBook.Model
 {
@@ -10,29 +11,24 @@ namespace AddressBook.Model
 
         private static readonly string _fileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AddressBook\userdata.xml";
 
-        private static XmlDocument xmlDoc = new XmlDocument();
-
         public static void SaveToFile(List <Contact> contacts) 
         {
             CreateFile();
 
-            XmlElement newElem = xmlDoc.CreateElement("price");
-            newElem.InnerText = "10.95";
-            xmlDoc.DocumentElement.AppendChild(newElem);
+              
+            var serializer = new XmlSerializer(typeof(List<Contact>));
 
-
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-
-            
-            XmlWriter writer = XmlWriter.Create("data.xml", settings);
-            xmlDoc.Save(writer);
-
+            using (var sw = new StreamWriter(_fileName)) 
+            {
+                serializer.Serialize(sw, contacts);
+            }
         }
 
         public static Contact LoadFromFile()
         {
             CreateFile();
+
+            
 
             return null;
         }
@@ -45,7 +41,7 @@ namespace AddressBook.Model
                 return;
             }
 
-            Directory.CreateDirectory(_fileName.Replace("\\user.xml", ""));
+            Directory.CreateDirectory(_fileName.Replace("\\userdata.xml", ""));
 
             using (FileStream fs = File.Create(_fileName)) 
             {
