@@ -15,7 +15,6 @@ namespace AddressBook.Model
         {
             CreateFile();
 
-              
             var serializer = new XmlSerializer(typeof(List<Contact>));
 
             using (var sw = new StreamWriter(_fileName)) 
