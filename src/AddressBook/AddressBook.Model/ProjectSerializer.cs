@@ -1,16 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace AddressBook.Model
 {
+    /// <summary>
+    /// Описывает класс работы с файлом.
+    /// </summary>
     public static class ProjectSerializer
     {
+        /// <summary>
+        /// Полный путь до файла, куда будут сохранятся пользователькие данные.
+        /// </summary>
+        private static readonly string _fileName = 
+            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AddressBook\userdata.xml";
 
-        private static readonly string _fileName = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AddressBook\userdata.xml";
-
+        /// <summary>
+        /// Сохранение контактов в файл.
+        /// </summary>
+        /// <param name="contacts">Список контактов.</param>
         public static void SaveToFile(List <Contact> contacts) 
         {
             CreateFile();
@@ -23,6 +32,10 @@ namespace AddressBook.Model
             }
         }
 
+        /// <summary>
+        /// Выгрузка данных из файла.
+        /// </summary>
+        /// <returns></returns>
         public static Contact LoadFromFile()
         {
             CreateFile();
@@ -32,7 +45,9 @@ namespace AddressBook.Model
             return null;
         }
 
-
+        /// <summary>
+        /// Создание полного пути вместе с файлом. 
+        /// </summary>
         private static void CreateFile() 
         {
             if (File.Exists(_fileName)) 
