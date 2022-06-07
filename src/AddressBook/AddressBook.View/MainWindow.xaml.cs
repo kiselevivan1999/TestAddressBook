@@ -21,6 +21,8 @@ namespace AddressBook.View
         public MainWindow()
         {            
             InitializeComponent();
+            _contacts = ProjectSerializer.LoadFromFile();
+            UpdateListBox();
         }
 
         /// <summary>

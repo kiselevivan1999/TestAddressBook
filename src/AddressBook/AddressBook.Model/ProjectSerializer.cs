@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace AddressBook.Model
@@ -36,13 +37,27 @@ namespace AddressBook.Model
         /// Выгрузка данных из файла.
         /// </summary>
         /// <returns></returns>
-        public static Contact LoadFromFile()
+        public static List<Contact> LoadFromFile()
         {
             CreateFile();
 
-            
+            using (var fs = new FileStream(_fileName, FileMode.Open))
+            {
+                var xtr = new XmlTextReader(fs);
+                var serializer = new XmlSerializer(typeof(List<Contact>));
+                var contacts = new List<Contact>();
 
-            return null;
+                try
+                {
+                    contacts = (List<Contact>)serializer.Deserialize(xtr);
+                }
+                catch(InvalidOperationException) 
+                {
+                    return contacts;
+                }
+
+                return contacts;   
+            }
         }
 
         /// <summary>
