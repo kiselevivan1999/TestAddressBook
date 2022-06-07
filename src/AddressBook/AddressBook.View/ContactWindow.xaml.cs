@@ -12,21 +12,42 @@ namespace AddressBook.View
     /// </summary>
     public partial class ContactWindow : Window
     {
+        /// <summary>
+        /// Новый контакт.
+        /// </summary>
         private Contact _contact = new Contact();
 
+        /// <summary>
+        /// Цвет подсветки textBox при корректном вводе данных.
+        /// </summary>
         private Brush _correctColor = Brushes.White;
 
+        /// <summary>
+        /// Цвет подсветки textBox при некорректном вводе данных.
+        /// </summary>
         private Brush _errorColor = Brushes.Pink;
 
+        /// <summary>
+        /// Подсказка для поля ввода номера.
+        /// </summary>
         private ToolTip _numberToolTip = new ToolTip();
 
+        /// <summary>
+        /// Подсказка для всех полей типа string.
+        /// </summary>
         private ToolTip _stringToolTip = new ToolTip();
 
+        /// <summary>
+        /// Инициализирует окно ContactWindow.
+        /// </summary>
         public ContactWindow()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Возвращает и задаёт новый контакт.
+        /// </summary>
         public Contact Contact {
             
             get 
@@ -42,6 +63,9 @@ namespace AddressBook.View
             }
         }
 
+        /// <summary>
+        /// Обновление данных контакта.
+        /// </summary>
         public void UpdateContact() 
         {
             _contact.Surname = SurnameTextBox.Text;
@@ -50,6 +74,9 @@ namespace AddressBook.View
             _contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
         }
 
+        /// <summary>
+        /// Обновление полей ввода данных.
+        /// </summary>
         public void UpdateWindow() 
         {
             IdTextBlock.Text = Contact.Id.ToString();

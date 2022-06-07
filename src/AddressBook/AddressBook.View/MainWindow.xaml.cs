@@ -10,13 +10,23 @@ namespace AddressBook.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Список контактов выводимых на окно.
+        /// </summary>
         private List<Contact> _contacts = new List<Contact>();
+        
+        /// <summary>
+        /// Инициализирует главное окно.
+        /// </summary>
         public MainWindow()
         {            
             InitializeComponent();
-
         }
 
+        /// <summary>
+        /// Заполняет поля данными выделенного контакта.
+        /// </summary>
+        /// <param name="index">Индекс выделенного контакта.</param>
         private void UpdateSelectContact(int index) 
         {
             Contact contact = _contacts[index];
@@ -28,6 +38,9 @@ namespace AddressBook.View
             PhoneNumberTextBlock.Text = contact.Number.ToString();
         }
 
+        /// <summary>
+        /// Обновляет отображаемый список контактов в ListBox.
+        /// </summary>
         private void UpdateListBox()
         { 
             ContactsListBox.Items.Clear();
@@ -38,6 +51,9 @@ namespace AddressBook.View
             }
         }
 
+        /// <summary>
+        /// Добавляет новый контакт.
+        /// </summary>
         private void AddContact() 
         {
             ContactWindow contactWindow = new ContactWindow();
@@ -54,6 +70,10 @@ namespace AddressBook.View
             UpdateListBox();
         }
 
+        /// <summary>
+        /// Редактирует выделенного контакт.
+        /// </summary>
+        /// <param name="index">Индекс контакта.</param>
         private void EditContact(int index) 
         {
             ContactWindow contactWindow = new ContactWindow();
@@ -69,9 +89,12 @@ namespace AddressBook.View
             _contacts.Insert(index, contactWindow.Contact);
 
             UpdateListBox();
-
         }
 
+        /// <summary>
+        /// Удаление выделенного контакта.
+        /// </summary>
+        /// <param name="index"></param>
         private void RemoveContact(int index) 
         {
             _contacts.RemoveAt(index);
