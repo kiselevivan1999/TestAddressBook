@@ -32,6 +32,11 @@ namespace AddressBook.Model
             Number = number;
         }
 
+        public PhoneNumber() 
+        {
+            
+        }
+
         private bool isValidated(string number)
         { 
             var regex = new Regex("^(7|8)[0-9]{10}$");
