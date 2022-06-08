@@ -71,7 +71,7 @@ namespace AddressBook.View
             _contact.Surname = SurnameTextBox.Text;
             _contact.Name = NameTextBox.Text;
             _contact.Patronymic = PatronymicTextBox.Text;
-            _contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
+            _contact.Number = new PhoneNumber(PhoneNumberTextBox.Text);
         }
 
         /// <summary>
@@ -88,11 +88,18 @@ namespace AddressBook.View
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            UpdateContact();
+            try
+            {
+                UpdateContact();
 
-            DialogResult = true;
+                DialogResult = true;
 
-            Close();        
+                Close();
+            }
+            catch (ArgumentException) 
+            {
+                MessageBox.Show("Correct the mistakes. Or enter data in empty fields.");
+            }
         }
 
         private void CanselButton_Click(object sender, RoutedEventArgs e)
@@ -154,7 +161,7 @@ namespace AddressBook.View
         {
             try
             {
-                _contact.Number = new PhoneNumber(ulong.Parse(PhoneNumberTextBox.Text));
+                _contact.Number = new PhoneNumber(PhoneNumberTextBox.Text);
                 PhoneNumberTextBox.Background = _correctColor;
 
             }

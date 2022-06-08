@@ -11,24 +11,24 @@ namespace AddressBook.Model
         /// <summary>
         /// Номер телфона.
         /// </summary>
-        private ulong _number;
+        private string _number;
 
         /// <summary>
         /// Возвращает и задаёт номер телфона.
         /// </summary>
-        public ulong Number 
+        public string Number 
         { 
-            get { return _number; } 
+            get => _number; 
             
             set 
             {
-                string strNumber = Regex.Replace(value.ToString(), "[^0-9]", "");
+                string number = Regex.Replace(value.ToString(), "[^0-9]", "");
 
-                if (!isValidated(strNumber)) 
+                if (!isValidated(number)) 
                 {
-                    throw new ArgumentException("Номер должен начинаться с 7 или 8 и содержать 11 цифр");
+                    throw new ArgumentException("Номер должен начинаться с +7, 7 или 8 и содержать 11 цифр");
                 }
-                _number = ulong.Parse(strNumber); 
+                _number = number; 
             } 
         }
 
@@ -36,7 +36,7 @@ namespace AddressBook.Model
         /// Создаёт экземпляр класса <see cref="PhoneNumber"/>
         /// </summary>
         /// <param name="number"></param>
-        public PhoneNumber(ulong number) 
+        public PhoneNumber(string number) 
         {
             Number = number;
         }
