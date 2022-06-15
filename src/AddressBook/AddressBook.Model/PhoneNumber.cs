@@ -22,10 +22,16 @@ namespace AddressBook.Model
             
             set 
             {
-                string number = Regex.Replace(value.ToString(), "[^0-9]", "");
+                string number = Regex.Replace(value.ToString(), "[^0-9]", ""); /* фильтровать - такое себе решение,
+                                                                                * т.к. пользователь может набрать
+                                                                                * вместо номера всякую дичь,
+                                                                                * содержащую 11 цифр, первая из которых 7 или 8:
+                                                                                * ывапш8вфзфа7фвап09а9пап-а7апыв099вап7в4ап и т.п.
+                                                                                * Это как-то не похоже на номер телефона.*/
 
                 if (!isValidated(number)) 
                 {
+                                                                        /*ну кого мы обманываем, какой +7 ?*/
                     throw new ArgumentException("Номер должен начинаться с +7, 7 или 8 и содержать 11 цифр");
                 }
                 _number = number; 
@@ -63,8 +69,9 @@ namespace AddressBook.Model
 
         public override string ToString()
         {
+            /*чёт много стринг ту стринг сабстринг подстринг, можно как-то оптимизировать?*/
             string number = Number.ToString();
-            number = number.Length == 12 ? number.Substring(2) : number.Substring(1);
+            number = number.Length == 12 ? number.Substring(2) : number.Substring(1);  // так-так, а откуда 12?
 
             return string.Format("8 ({0}) {1}-{2} {3}", number.Substring(0, 3),
                 number.Substring(3, 3), number.Substring(6, 2), number.Substring(8, 2));

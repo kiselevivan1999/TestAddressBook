@@ -38,6 +38,7 @@ namespace AddressBook.Model
             {
                 if (!isValidated(value)) 
                 {
+                    /*Нужно перед этим ещё один MessageBox вопросительный: "дуюспикинглишь?"*/
                     throw new ArgumentException("Name must be between 2 and 50 characters");
                 }
                 _name = value;
@@ -72,7 +73,11 @@ namespace AddressBook.Model
             {
                 if (!isValidated(value))
                 {
-                    throw new ArgumentException("Patronymic must be between 2 and 50 characters");
+                    /*И тут Вася начинет гуглить, что же такое patronymic...
+                     *Если умеет, конечно же*/
+
+                    throw new ArgumentException("Patronymic must be between 2 and 50 characters"); /* бывает, что у кого-то нет отчества,
+                                                                                                      плюс в задаче сказано только про имя/фамилию*/
                 }
                 _patronymic = value;
             }
@@ -90,11 +95,15 @@ namespace AddressBook.Model
         /// <returns>true - строка подходит по требованиям, false - строка не прошла проверку.</returns>
         private bool isValidated(string str) 
         {
-            if (str.Length >= 2 && str.Length <= 50) 
-            {
-                return true;
-            }
-            return false;
+            // можно проще:
+            return str.Length >= 2 && str.Length <= 50;
+            // Но, если где-то str станет null, то вывалится Exception. Что увидит пользователь?
+
+            /* if (str.Length >= 2 && str.Length <= 50) 
+             {
+                 return true;
+             }
+             return false;*/
         }
     }
 }
