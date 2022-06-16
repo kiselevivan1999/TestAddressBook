@@ -98,7 +98,7 @@ namespace AddressBook.View
             }
             catch (ArgumentException) 
             {
-                MessageBox.Show("Correct the mistakes. Or enter data in empty fields.");
+                MessageBox.Show("Исправь ошибки или введите данные в пустые поля.");
             }
         }
 

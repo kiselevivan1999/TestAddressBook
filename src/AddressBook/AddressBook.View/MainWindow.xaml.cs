@@ -112,7 +112,7 @@ namespace AddressBook.View
         {
             if (ContactsListBox.SelectedIndex == -1)
             {
-                MessageBox.Show("Choose contact");
+                MessageBox.Show("Выберите контакт.");
                 return;
             }   
              EditContact(ContactsListBox.SelectedIndex); 
@@ -122,10 +122,10 @@ namespace AddressBook.View
         {
             if (ContactsListBox.SelectedIndex == -1) 
             {
-                MessageBox.Show("Choose contact");
+                MessageBox.Show("Выберите контакт.");
                 return;
             }
-            var result = MessageBox.Show("You realy want remove this contact?", "Removing", MessageBoxButton.YesNo);
+            var result = MessageBox.Show("Вы действительно хотите удалить контакт", "Удаление", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes) 
             {
                 RemoveContact(ContactsListBox.SelectedIndex);
@@ -134,7 +134,7 @@ namespace AddressBook.View
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var result = MessageBox.Show("You realy want exit?", "Exiting", MessageBoxButton.YesNo);
+            var result = MessageBox.Show("Вы действительно хотетите выйти?", "Выход", MessageBoxButton.YesNo);
             
             if (result == MessageBoxResult.No)
             {

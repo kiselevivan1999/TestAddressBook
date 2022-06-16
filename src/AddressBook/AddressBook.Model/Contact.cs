@@ -38,7 +38,7 @@ namespace AddressBook.Model
             {
                 if (!isValidated(value)) 
                 {
-                    throw new ArgumentException("Name must be between 2 and 50 characters");
+                    throw new ArgumentException("Имя должно содержать от 2 до 50 символов.");
                 }
                 _name = value;
             } 
@@ -55,7 +55,7 @@ namespace AddressBook.Model
             {
                 if (!isValidated(value))
                 {
-                    throw new ArgumentException("Sername must be between 2 and 50 characters");
+                    throw new ArgumentException("Фамилия должно содержать от 2 до 50 символов.");
                 }
                 _sername = value;
             }
@@ -70,10 +70,6 @@ namespace AddressBook.Model
 
             set
             {
-                if (!isValidated(value))
-                {
-                    throw new ArgumentException("Patronymic must be between 2 and 50 characters");
-                }
                 _patronymic = value;
             }
         }
