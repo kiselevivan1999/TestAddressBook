@@ -86,11 +86,7 @@ namespace AddressBook.Model
         /// <returns>true - строка подходит по требованиям, false - строка не прошла проверку.</returns>
         private bool isValidated(string str) 
         {
-            if (str.Length >= 2 && str.Length <= 50) 
-            {
-                return true;
-            }
-            return false;
+            return str?.Length >= 2 && str?.Length <= 50;
         }
     }
 }
