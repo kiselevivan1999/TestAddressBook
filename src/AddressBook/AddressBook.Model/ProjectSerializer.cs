@@ -17,7 +17,7 @@ namespace AddressBook.Model
         private static readonly string _fileName = 
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AddressBook\userdata.xml";
 
-        /// <summary>
+        /// <summary> 
         /// Сохранение контактов в файл.
         /// </summary>
         /// <param name="contacts">Список контактов.</param>
@@ -43,19 +43,19 @@ namespace AddressBook.Model
 
             using (var fs = new FileStream(_fileName, FileMode.Open))
             {
-                var xtr = new XmlTextReader(fs);
                 var serializer = new XmlSerializer(typeof(List<Contact>));
                 var contacts = new List<Contact>();
-
-                try
+                using (var xtr = new XmlTextReader(fs))
                 {
-                    contacts = (List<Contact>)serializer.Deserialize(xtr);
+                    try
+                    {
+                        contacts = (List<Contact>)serializer.Deserialize(xtr);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        return contacts;
+                    }
                 }
-                catch(InvalidOperationException) 
-                {
-                    return contacts;
-                }
-
                 return contacts;   
             }
         }
@@ -74,7 +74,7 @@ namespace AddressBook.Model
 
             using (FileStream fs = File.Create(_fileName)) 
             {
-                fs.Dispose();
+                
             }
         }
     }
