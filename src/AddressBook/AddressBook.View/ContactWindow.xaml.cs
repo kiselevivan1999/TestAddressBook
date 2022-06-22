@@ -50,10 +50,7 @@ namespace AddressBook.View
         /// </summary>
         public Contact Contact {
             
-            get 
-            {
-                return _contact;
-            }
+            get => _contact;
 
             set 
             {
