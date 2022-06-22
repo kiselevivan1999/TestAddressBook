@@ -2,6 +2,7 @@
 using System.Windows;
 using AddressBook.Model;
 using System.Windows.Controls;
+using System;
 
 namespace AddressBook.View
 {
@@ -60,7 +61,8 @@ namespace AddressBook.View
         {
             ContactWindow contactWindow = new ContactWindow();
 
-            contactWindow.Contact.Id = _contacts.Count;
+            var random = new Random();
+            contactWindow.Contact.Id = _contacts.Count + random.GetHashCode();
             var result = contactWindow.ShowDialog();
 
             if (!result.Value) 
