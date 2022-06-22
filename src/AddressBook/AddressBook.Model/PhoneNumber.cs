@@ -22,13 +22,11 @@ namespace AddressBook.Model
             
             set 
             {
-                string number = Regex.Replace(value.ToString(), "[^0-9]", "");
-
-                if (!isValidated(number)) 
+                if (!isValidated(value)) 
                 {
                     throw new ArgumentException("Номер должен начинаться с +7, 7 или 8 и содержать 11 цифр");
                 }
-                _number = number; 
+                _number = value; 
             } 
         }
 
@@ -56,15 +54,17 @@ namespace AddressBook.Model
         /// <returns>true - номер соответствует, false - номер не соответствует.</returns>
         private bool isValidated(string number)
         { 
-            var regex = new Regex("^(7|8)[0-9]{10}$");
+            var regex =
+                new Regex("^(\\+?7|8)\\s?(\\(|-)?\\s?[0-9]{3}\\s?(\\)|-)?\\s?[0-9]{3}\\s?-?\\s?[0-9]{2}\\s?-?\\s?[0-9]{2}$");
 
             return regex.IsMatch(number);
         }
 
         public override string ToString()
         {
-            string number = Number.ToString();
-            number = number.Length == 12 ? number.Substring(2) : number.Substring(1);
+            string number = Number;
+            number = Regex.Replace(number.ToString(), "[^0-9]", "");
+            number = number.Substring(1);
 
             return string.Format("8 ({0}) {1}-{2} {3}", number.Substring(0, 3),
                 number.Substring(3, 3), number.Substring(6, 2), number.Substring(8, 2));
