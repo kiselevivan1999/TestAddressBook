@@ -2,16 +2,7 @@
 using System.Windows;
 using AddressBook.Model;
 using System.Windows.Controls;
-
-/*
- * В целом по заданию (после компиляции):
-    1. нельзя создать пользователя без отчества (в задаче валидацию проходят только имя и фамилия)
-    2. можно создать пользователей с одинаковым Id, если удалить не последнего и добавить нового
-    3. приложение называется "MainWindow"
-    4. почему нельзя развернуть на весь экран?
-    5. интерфейс на английском для кого?
-    6. окно "ContactWindow" проглотит строку 8абвгде9521597199
- */
+using System;
 
 namespace AddressBook.View
 {
@@ -35,15 +26,12 @@ namespace AddressBook.View
             UpdateListBox();
         }
 
-        /*ох уж этот CodeBehind...*/
-
         /// <summary>
         /// Заполняет поля данными выделенного контакта.
         /// </summary>
         /// <param name="index">Индекс выделенного контакта.</param>
         private void UpdateSelectContact(int index) 
         {
-                              /*уверен, что такое количество контактов есть? или index >= 0?*/
             Contact contact = _contacts[index];
 
             IdTextBlock.Text = contact.Id.ToString();
@@ -58,11 +46,11 @@ namespace AddressBook.View
         /// </summary>
         private void UpdateListBox()
         { 
-            ContactsListBox.Items.Clear(); // уверен, что не может возникнуть иключение?
+            ContactsListBox.Items.Clear();
 
             foreach (Contact contact in _contacts) 
             {
-                ContactsListBox.Items.Add(contact.Surname); // contact или contact.Surname может быть null?
+                ContactsListBox.Items.Add(contact.Surname);
             }
         }
 
@@ -73,10 +61,11 @@ namespace AddressBook.View
         {
             ContactWindow contactWindow = new ContactWindow();
 
-            contactWindow.Contact.Id = _contacts.Count;
+            var random = new Random();
+            contactWindow.Contact.Id = _contacts.Count + random.GetHashCode();
             var result = contactWindow.ShowDialog();
-            
-            if (!result.Value) // а если !result.HasValue ?
+
+            if (!result.Value) 
             {
                 return;
             }
@@ -92,7 +81,6 @@ namespace AddressBook.View
         private void EditContact(int index) 
         {
             ContactWindow contactWindow = new ContactWindow();
-            /*уверен, что такое количество контактов есть? или index >= 0?*/
             contactWindow.Contact = _contacts[index];
             var result = contactWindow.ShowDialog();
 
@@ -113,7 +101,6 @@ namespace AddressBook.View
         /// <param name="index"></param>
         private void RemoveContact(int index) 
         {
-            /*уверен, что такое количество контактов есть? или index >= 0?*/
             _contacts.RemoveAt(index);
             UpdateListBox();
         }
@@ -127,7 +114,7 @@ namespace AddressBook.View
         {
             if (ContactsListBox.SelectedIndex == -1)
             {
-                MessageBox.Show("Choose contact");
+                MessageBox.Show("Выберите контакт.");
                 return;
             }   
              EditContact(ContactsListBox.SelectedIndex); 
@@ -137,11 +124,10 @@ namespace AddressBook.View
         {
             if (ContactsListBox.SelectedIndex == -1) 
             {
-                MessageBox.Show("Choose contact");
+                MessageBox.Show("Выберите контакт.");
                 return;
             }
-            /*result можно не выносить в отдельную переменную*/
-            var result = MessageBox.Show("You realy want remove this contact?", "Removing", MessageBoxButton.YesNo);
+            var result = MessageBox.Show("Вы действительно хотите удалить контакт", "Удаление", MessageBoxButton.YesNo);
             if (result == MessageBoxResult.Yes) 
             {
                 RemoveContact(ContactsListBox.SelectedIndex);
@@ -150,8 +136,8 @@ namespace AddressBook.View
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var result = MessageBox.Show("You realy want exit?", "Exiting", MessageBoxButton.YesNo);
-            /*то же самое, что выше*/
+            var result = MessageBox.Show("Вы действительно хотетите выйти?", "Выход", MessageBoxButton.YesNo);
+            
             if (result == MessageBoxResult.No)
             {
                 e.Cancel = true;

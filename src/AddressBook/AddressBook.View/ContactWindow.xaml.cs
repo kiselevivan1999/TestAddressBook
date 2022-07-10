@@ -49,12 +49,8 @@ namespace AddressBook.View
         /// Возвращает и задаёт новый контакт.
         /// </summary>
         public Contact Contact {
-
-            get => _contact; // можно так
-           /* get 
-            {
-                return _contact;
-            }*/
+            
+            get => _contact;
 
             set 
             {
@@ -68,9 +64,7 @@ namespace AddressBook.View
         /// Обновление данных контакта.
         /// </summary>
         public void UpdateContact() 
-        { 
-            /*переходи на MVVM, забудь уже про этот CodeBehind*/
-
+        {
             _contact.Surname = SurnameTextBox.Text;
             _contact.Name = NameTextBox.Text;
             _contact.Patronymic = PatronymicTextBox.Text;
@@ -101,8 +95,7 @@ namespace AddressBook.View
             }
             catch (ArgumentException) 
             {
-                                /*дуюспикинглишь, юзер?*/
-                MessageBox.Show("Correct the mistakes. Or enter data in empty fields.");
+                MessageBox.Show("Исправь ошибки или введите данные в пустые поля.");
             }
         }
 
@@ -112,9 +105,6 @@ namespace AddressBook.View
 
             Close();
         }
-
-        /*Если б использовал MVVM, не пришлось бы плодить 4 одинаковых метода, которые снизу.
-         * Мог бы забиндить все свойства, а в одном методе менять их у разных экземпляров*/
 
         private void SurnameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {

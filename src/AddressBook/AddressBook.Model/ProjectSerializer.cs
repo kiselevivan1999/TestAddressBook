@@ -17,7 +17,7 @@ namespace AddressBook.Model
         private static readonly string _fileName = 
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\AddressBook\userdata.xml";
 
-        /// <summary>
+        /// <summary> 
         /// Сохранение контактов в файл.
         /// </summary>
         /// <param name="contacts">Список контактов.</param>
@@ -40,23 +40,23 @@ namespace AddressBook.Model
         public static List<Contact> LoadFromFile()
         {
             CreateFile();
-            /*в этом юзинге же ты нигде не диспозишь fs, почему тогда в CreateFile это делаешь?*/
+
             using (var fs = new FileStream(_fileName, FileMode.Open))
             {
-                var xtr = new XmlTextReader(fs); // а почему ридер не через using?
                 var serializer = new XmlSerializer(typeof(List<Contact>));
                 var contacts = new List<Contact>();
-                
-                try
+                using (var xtr = new XmlTextReader(fs))
                 {
-                    contacts = (List<Contact>)serializer.Deserialize(xtr);
+                    try
+                    {
+                        contacts = (List<Contact>)serializer.Deserialize(xtr);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        return contacts;
+                    }
                 }
-                catch(InvalidOperationException) 
-                {
-                    return contacts; // а смысл тут возвращать, когда после try/catch всё равно та же коллекция возвращается?
-                }
-
-                return contacts; 
+                return contacts;   
             }
         }
 
@@ -74,7 +74,7 @@ namespace AddressBook.Model
 
             using (FileStream fs = File.Create(_fileName)) 
             {
-                fs.Dispose(); // почитай, вспомни, зачем нужны using
+                
             }
         }
     }
