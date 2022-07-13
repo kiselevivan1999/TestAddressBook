@@ -24,6 +24,7 @@ namespace AddressBook.Model
             {
                 if (!isValidated(value)) 
                 {
+                                                                        /*ну кого мы обманываем, какой +7 ?*/
                     throw new ArgumentException("Номер должен начинаться с +7, 7 или 8 и содержать 11 цифр");
                 }
                 _number = value; 
