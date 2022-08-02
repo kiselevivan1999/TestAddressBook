@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AddressBook.View"
         mc:Ignorable="d"
-        Title="AddressBook" Height="400" Width="800"
+        Title="Адресная книга" Height="400" Width="800"
         MinHeight="360" MinWidth="600"
         Closing="Window_Closing">
     <Grid Margin="0,0,0,2">
-        <GroupBox Header="Contact details" Margin="260,20,20,30" Background="WhiteSmoke">
+        <GroupBox Header="Данные контакта" Margin="260,20,20,30" Background="WhiteSmoke">
             <StackPanel>
                 <Label x:Name="IdLabel" Content="ID: " Background="AliceBlue"/>
                 <TextBlock x:Name="IdTextBlock" Height="20" Background="White"/>
-                <Label x:Name="SurnameLabel" Content="Surname: " Background="AliceBlue"/>
+                <Label x:Name="SurnameLabel" Content="Фамилия: " Background="AliceBlue"/>
                 <TextBlock x:Name="SurnameTextBox" Height="20" Background="White"/>
-                <Label x:Name="NameLabel" Content="Name: " Background="AliceBlue"/>
+                <Label x:Name="NameLabel" Content="Имя: " Background="AliceBlue"/>
                 <TextBlock x:Name="NameTextBox" Height="20" Background="White"/>
-                <Label x:Name="PatronymicLabel" Content="Patronymic: " Background="AliceBlue"/>
+                <Label x:Name="PatronymicLabel" Content="Отчество: " Background="AliceBlue"/>
                 <TextBlock x:Name="PatronymicTextBlock" Height="20" Background="White"/>
-                <Label x:Name="PhoneNumberLabel" Content="PhoneNumber: " Background="AliceBlue"/>
+                <Label x:Name="PhoneNumberLabel" Content="Номер телефона: " Background="AliceBlue"/>
                 <TextBlock x:Name="PhoneNumberTextBlock" Height="20" Background="White"/>
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Contacts: " Margin="10,20,0,100" HorizontalAlignment="Left" Width="240">
+        <GroupBox Header="Контакты: " Margin="10,20,0,100" HorizontalAlignment="Left" Width="240">
             <ListBox x:Name="ContactsListBox" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ContactsListBox_SelectionChanged"/>
         </GroupBox>
         <Button x:Name="AddButton" Margin="10,0,0,55" Background="White" BorderBrush="White" HorizontalAlignment="Left" Width="60" Height="40" VerticalAlignment="Bottom" Click="AddButton_Click">

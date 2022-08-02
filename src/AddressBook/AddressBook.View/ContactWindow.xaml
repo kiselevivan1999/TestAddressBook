@@ -6,20 +6,20 @@
         xmlns:local="clr-namespace:AddressBook.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ContactWindow" Height="340" Width="600" 
+        Title="Добавление/Редактирование контакта" Height="340" Width="600" 
         MinHeight="340" MaxHeight="340" MinWidth="600" MaxWidth="600">
     <Grid>
-        <GroupBox Header="Contact details" Background="WhiteSmoke" VerticalAlignment="Top" Margin="10">
+        <GroupBox Header="Данные контакта:" Background="WhiteSmoke" VerticalAlignment="Top" Margin="10">
             <StackPanel>
                 <Label x:Name="IdLabel" Content="ID: " Background="AliceBlue"/>
                 <TextBlock x:Name="IdTextBlock" Height="20" Background="White"/>
-                <Label x:Name="SurnameLabel" Content="Surname: " Background="AliceBlue"/>
+                <Label x:Name="SurnameLabel" Content="Фамилия: " Background="AliceBlue"/>
                 <TextBox x:Name="SurnameTextBox" Height="20" Background="White" TextChanged="SurnameTextBox_TextChanged"/>
-                <Label x:Name="NameLabel" Content="Name: " Background="AliceBlue"/>
+                <Label x:Name="NameLabel" Content="Имя: " Background="AliceBlue"/>
                 <TextBox x:Name="NameTextBox" Height="20" Background="White" TextChanged="NameTextBox_TextChanged"/>
-                <Label x:Name="PatronymicLabel" Content="Patronymic: " Background="AliceBlue"/>
+                <Label x:Name="PatronymicLabel" Content="Отчество: " Background="AliceBlue"/>
                 <TextBox x:Name="PatronymicTextBox" Height="20" Background="White" TextChanged="PatronymicTextBox_TextChanged"/>
-                <Label x:Name="PhoneNumberLabel" Content="PhoneNumber: " Background="AliceBlue"/>
+                <Label x:Name="PhoneNumberLabel" Content="Номер телефона: " Background="AliceBlue"/>
                 <TextBox x:Name="PhoneNumberTextBox" Height="20" Background="White" TextChanged="PhoneNumberTextBox_TextChanged"/>
             </StackPanel>
         </GroupBox>
