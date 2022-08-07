@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using AddressBook.Model;
@@ -10,7 +11,7 @@ namespace AddressBook.ViewModel
         private List<Contact> _contacts = new List<Contact>();
         private Contact _selectedContact = new Contact();
 
-        public MainWindowVM() 
+        public MainWindowVM()
         {
             _contacts = ProjectSerializer.LoadFromFile();
         }

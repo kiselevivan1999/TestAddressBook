@@ -3,6 +3,7 @@ using System.Windows;
 using AddressBook.Model;
 using System.Windows.Controls;
 using System;
+using AddressBook.ViewModel;
 
 namespace AddressBook.View
 {
@@ -22,6 +23,7 @@ namespace AddressBook.View
         public MainWindow()
         {            
             InitializeComponent();
+            MainWindowVM vm = new MainWindowVM();
             _contacts = ProjectSerializer.LoadFromFile();
             UpdateListBox();
         }

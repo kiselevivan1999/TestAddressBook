@@ -151,6 +151,10 @@
       <Project>{2b63fce9-4610-4b50-91e9-870c5700326b}</Project>
       <Name>AddressBook.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AddressBook.ViewModel\AddressBook.ViewModel.csproj">
+      <Project>{5294848c-84e5-42db-bec0-c1d41505fce6}</Project>
+      <Name>AddressBook.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
