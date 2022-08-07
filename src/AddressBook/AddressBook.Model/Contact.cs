@@ -47,7 +47,7 @@ namespace AddressBook.Model
                     throw new ArgumentException("Имя должно содержать от 2 до 50 символов.");
                 }
                 _name = value;
-                OnPropertyChanged("Name");
+                OnPropertyChanged();
             } 
         }
 
@@ -65,7 +65,7 @@ namespace AddressBook.Model
                     throw new ArgumentException("Фамилия должно содержать от 2 до 50 символов.");
                 }
                 _sername = value;
-                OnPropertyChanged("Surname");
+                OnPropertyChanged();
             }
         }
 
@@ -79,7 +79,7 @@ namespace AddressBook.Model
             set
             {
                 _patronymic = value;
-                OnPropertyChanged("Patronymic");
+                OnPropertyChanged();
             }
         }
 
@@ -92,7 +92,7 @@ namespace AddressBook.Model
             set 
             {
                 _phone = value;
-                OnPropertyChanged("Phone");
+                OnPropertyChanged();
             } 
         }
 

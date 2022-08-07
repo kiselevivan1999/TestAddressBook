@@ -12,18 +12,18 @@
         <local:MainWindowVM/>
     </Window.DataContext>
     <Grid Margin="0,0,0,2">
-        <GroupBox Header="Данные контакта" DataContext="{Binding SelectedContact}" Margin="260,20,20,30" Background="WhiteSmoke">
-            <StackPanel>
+        <GroupBox Header="Данные контакта" Margin="260,20,20,30" Background="WhiteSmoke">
+            <StackPanel DataContext="{Binding SelectedContact}">
                 <Label x:Name="IdLabel" Content="ID: " Background="AliceBlue"/>
-                <TextBlock x:Name="IdTextBlock" Height="20" Background="White"/>
+                <TextBlock x:Name="IdTextBlock" Text="{Binding Id}" Height="20" Background="White"/>
                 <Label x:Name="SurnameLabel" Content="Фамилия: " Background="AliceBlue"/>
-                <TextBlock x:Name="SurnameTextBox" Height="20" Background="White"/>
+                <TextBlock x:Name="SurnameTextBox" Text="{Binding Surname}" Height="20" Background="White"/>
                 <Label x:Name="NameLabel" Content="Имя: " Background="AliceBlue"/>
-                <TextBlock x:Name="NameTextBox" Height="20" Background="White"/>
+                <TextBlock x:Name="NameTextBox" Text="{Binding Name}" Height="20" Background="White"/>
                 <Label x:Name="PatronymicLabel" Content="Отчество: " Background="AliceBlue"/>
-                <TextBlock x:Name="PatronymicTextBlock" Height="20" Background="White"/>
+                <TextBlock x:Name="PatronymicTextBlock" Text="{Binding Patronymic}" Height="20" Background="White"/>
                 <Label x:Name="PhoneNumberLabel" Content="Номер телефона: " Background="AliceBlue"/>
-                <TextBlock x:Name="PhoneNumberTextBlock" Height="20" Background="White"/>
+                <TextBlock x:Name="PhoneNumberTextBlock" Text="{Binding Phone}" Height="20" Background="White"/>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Контакты: " Margin="10,20,0,100" HorizontalAlignment="Left" Width="240">

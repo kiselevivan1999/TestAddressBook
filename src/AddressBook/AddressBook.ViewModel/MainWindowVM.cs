@@ -9,7 +9,6 @@ namespace AddressBook.ViewModel
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
-        //private ObservableCollection<Contact> _contacts;
         private Contact _selectedContact = new Contact();
 
         public MainWindowVM()
@@ -25,7 +24,7 @@ namespace AddressBook.ViewModel
             set
             {
                 _selectedContact = value;
-                OnPropertyChanged("SelectedPhone");
+                OnPropertyChanged();
             }
         }
 
