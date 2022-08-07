@@ -12,7 +12,7 @@
         <local:MainWindowVM/>
     </Window.DataContext>
     <Grid Margin="0,0,0,2">
-        <GroupBox Header="Данные контакта" Margin="260,20,20,30" Background="WhiteSmoke">
+        <GroupBox Header="Данные контакта" DataContext="{Binding SelectedContact}" Margin="260,20,20,30" Background="WhiteSmoke">
             <StackPanel>
                 <Label x:Name="IdLabel" Content="ID: " Background="AliceBlue"/>
                 <TextBlock x:Name="IdTextBlock" Height="20" Background="White"/>
@@ -27,7 +27,13 @@
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Контакты: " Margin="10,20,0,100" HorizontalAlignment="Left" Width="240">
-            <ListBox x:Name="ContactsListBox" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="ContactsListBox_SelectionChanged"/>
+            <ListBox x:Name="ContactsListBox" d:ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Path=Surname}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </GroupBox>
         <Button x:Name="AddButton" Margin="10,0,0,55" Background="White" BorderBrush="White" HorizontalAlignment="Left" Width="60" Height="40" VerticalAlignment="Bottom" Click="AddButton_Click">
             <Button.ContentTemplate>

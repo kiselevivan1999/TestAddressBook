@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using AddressBook.Model;
@@ -8,13 +9,15 @@ namespace AddressBook.ViewModel
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
-        private List<Contact> _contacts = new List<Contact>();
+        //private ObservableCollection<Contact> _contacts;
         private Contact _selectedContact = new Contact();
 
         public MainWindowVM()
         {
-            _contacts = ProjectSerializer.LoadFromFile();
+            Contacts = new ObservableCollection<Contact>(ProjectSerializer.LoadFromFile());
         }
+
+        public ObservableCollection<Contact> Contacts { get; set; }
 
         public Contact SelectedContact
         {

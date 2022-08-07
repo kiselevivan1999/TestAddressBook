@@ -25,6 +25,10 @@ namespace AddressBook.Model
         private string _patronymic;
 
         /// <summary>
+        /// Номер телефона контакта.
+        /// </summary>
+        private PhoneNumber _phone;
+        /// <summary>
         /// ID контакта.
         /// </summary>
         public int Id { get; set; }
@@ -43,6 +47,7 @@ namespace AddressBook.Model
                     throw new ArgumentException("Имя должно содержать от 2 до 50 символов.");
                 }
                 _name = value;
+                OnPropertyChanged("Name");
             } 
         }
 
@@ -60,6 +65,7 @@ namespace AddressBook.Model
                     throw new ArgumentException("Фамилия должно содержать от 2 до 50 символов.");
                 }
                 _sername = value;
+                OnPropertyChanged("Surname");
             }
         }
 
@@ -73,13 +79,22 @@ namespace AddressBook.Model
             set
             {
                 _patronymic = value;
+                OnPropertyChanged("Patronymic");
             }
         }
 
         /// <summary>
         /// Возвращает и задаёт номер телефона
         /// </summary>
-        public PhoneNumber Number { get; set; }
+        public PhoneNumber Phone 
+        { 
+            get => _phone;
+            set 
+            {
+                _phone = value;
+                OnPropertyChanged("Phone");
+            } 
+        }
 
         /// <summary>
         /// Проверяет строку на соответствие формату.

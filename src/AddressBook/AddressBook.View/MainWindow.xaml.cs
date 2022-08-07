@@ -4,6 +4,7 @@ using AddressBook.Model;
 using System.Windows.Controls;
 using System;
 using AddressBook.ViewModel;
+using System.Linq;
 
 namespace AddressBook.View
 {
@@ -16,16 +17,17 @@ namespace AddressBook.View
         /// Список контактов выводимых на окно.
         /// </summary>
         private List<Contact> _contacts = new List<Contact>();
-        
+
+        MainWindowVM vm;
         /// <summary>
         /// Инициализирует главное окно.
         /// </summary>
         public MainWindow()
         {            
             InitializeComponent();
-            MainWindowVM vm = new MainWindowVM();
-            _contacts = ProjectSerializer.LoadFromFile();
-            UpdateListBox();
+            vm = new MainWindowVM();
+            //_contacts = ProjectSerializer.LoadFromFile();
+            //UpdateListBox();
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace AddressBook.View
             SurnameTextBox.Text = contact.Surname;
             NameTextBox.Text = contact.Name;
             PatronymicTextBlock.Text = contact.Patronymic;
-            PhoneNumberTextBlock.Text = contact.Number.ToString();
+            PhoneNumberTextBlock.Text = contact.Phone.ToString();
         }
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace AddressBook.View
         { 
             ContactsListBox.Items.Clear();
 
-            foreach (Contact contact in _contacts) 
+            foreach (Contact contact in vm.Contacts) 
             {
                 ContactsListBox.Items.Add(contact.Surname);
             }
@@ -71,9 +73,10 @@ namespace AddressBook.View
             {
                 return;
             }
-            
-            _contacts.Add(contactWindow.Contact);
-            UpdateListBox();
+
+            vm.Contacts.Add(contactWindow.Contact);
+            //_contacts.Add(contactWindow.Contact);
+            //UpdateListBox();
         }
 
         /// <summary>
@@ -146,7 +149,7 @@ namespace AddressBook.View
                 return;
             }
 
-            ProjectSerializer.SaveToFile(_contacts);
+            ProjectSerializer.SaveToFile(vm.Contacts.ToList());
         }
 
         private void ContactsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

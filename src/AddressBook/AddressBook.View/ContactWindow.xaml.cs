@@ -68,7 +68,7 @@ namespace AddressBook.View
             _contact.Surname = SurnameTextBox.Text;
             _contact.Name = NameTextBox.Text;
             _contact.Patronymic = PatronymicTextBox.Text;
-            _contact.Number = new PhoneNumber(PhoneNumberTextBox.Text);
+            _contact.Phone = new PhoneNumber(PhoneNumberTextBox.Text);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace AddressBook.View
             SurnameTextBox.Text = Contact.Surname;
             NameTextBox.Text = Contact.Name;
             PatronymicTextBox.Text = Contact.Patronymic;
-            PhoneNumberTextBox.Text = Contact.Number.ToString();
+            PhoneNumberTextBox.Text = Contact.Phone.ToString();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -158,7 +158,7 @@ namespace AddressBook.View
         {
             try
             {
-                _contact.Number = new PhoneNumber(PhoneNumberTextBox.Text);
+                _contact.Phone = new PhoneNumber(PhoneNumberTextBox.Text);
                 PhoneNumberTextBox.Background = _correctColor;
 
             }
