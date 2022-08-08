@@ -13,7 +13,14 @@ namespace AddressBook.ViewModel
 
         public MainWindowVM()
         {
-            Contacts = new ObservableCollection<Contact>(ProjectSerializer.LoadFromFile());
+            //Contacts = new ObservableCollection<Contact>(ProjectSerializer.LoadFromFile());
+            Contacts = new ObservableCollection<Contact>();
+            Contact contact = new Contact();
+            contact.Surname = "Kis";
+            contact.Patronymic = "Miay";
+            contact.Name = "Кошечка";
+            contact.Phone = new PhoneNumber("8 904 999 04 51");
+            Contacts.Add(contact);
         }
 
         public ObservableCollection<Contact> Contacts { get; set; }

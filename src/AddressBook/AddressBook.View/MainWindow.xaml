@@ -30,7 +30,14 @@
             <ListBox x:Name="ContactsListBox" d:ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Path=Surname}"/>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="{Binding Path=Surname}" FontSize="16"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=Name}" FontSize="10"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock Text="{Binding Path=Patronymic}" FontSize="10"/>
+                            </StackPanel>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
